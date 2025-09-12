@@ -6,7 +6,7 @@ export function Calendar(props) {
     const [event, setEvent] = useState([]);
 
     const makeAPICall = async () => {
-        let baseUrl = "https://api.chmeetings.com/Public/Calendar/Events?isPublicPage=true&chId=4895C97227BEBCDF&calendars=&start=2025-08-25&end=2025-10-05";
+        let baseUrl = "";
 
         try {
             const response = await fetch(`${baseUrl}`);

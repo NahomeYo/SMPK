@@ -26,12 +26,10 @@ body::before {
 }
 
 nav {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  position: fixed;
-  width: 100vw;
-  z-index: 998;
-  pointer-events: auto;
+  display: flex;
+  align-content: center;
+  justify-content: start;
+  gap: var(--sectionSpacing);
 }
 
 nav.scroll {
@@ -51,13 +49,15 @@ nav.scrollUp {
 
 nav span {
   display: flex;
+  justify-content: space-between;
 }
 
 nav span:nth-of-type(1) {
-  grid-column: 2/5;
+  width: 30%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 nav span:nth-of-type(1) li {
@@ -72,6 +72,7 @@ nav span:nth-of-type(1) li {
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  width: 100%;
 }
 
 .options {
@@ -110,17 +111,53 @@ nav span:nth-of-type(1) li {
 }
 
 .link {
-  text-decoration: none;
-  background: none;
   border: none;
-  height: 100%;
-  border-bottom: 0 solid var(--fourthly);
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background: none;
+  z-index: 1000;
+  pointer-events: all;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 5px;
+  background: var(--fourthly);
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
 }
 
 nav span p {
   height: 100%;
   display: flex;
+}
+
+nav span li {
+  width: 100%;
+}
+
+nav>p {
+  color: var(--sixthly);
+}
+
+nav span li p,
+nav span button p {
+  width: 100%;
+  text-align: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  height: min-content;
+  margin: var(--border) 0;
+  color: var(--sixthly);
 }
 
 nav span li:nth-of-type(2)+button p,
@@ -141,11 +178,11 @@ nav span:nth-of-type(1) p {
 }
 
 nav span:nth-of-type(2) {
-  grid-column: 5/6;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: scale 0.1s ease-in-out;
+  flex-grow: 0;
 }
 
 nav span:nth-of-type(2):hover {
@@ -153,11 +190,12 @@ nav span:nth-of-type(2):hover {
 }
 
 nav span:nth-of-type(3) {
-  grid-column: 6/9;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: end;
   gap: var(--space);
+  flex-grow: 1;
 }
 
 nav span:nth-of-type(3) li {
@@ -180,7 +218,6 @@ nav span:nth-of-type(3)>p {
   color: var(--fourthly);
   border-radius: 10px;
   padding: calc(var(--space) / 2);
-  z-index: 1;
   transition: 0.1s ease-in;
 }
 
@@ -1138,4 +1175,22 @@ footer h2 {
 
 .parentFolder h2 {
   margin: 2rem;
+}
+
+.menuContainer * {
+  z-index: 999;
+}
+
+.bunWipe {
+  animation: swipeBun 0.25s ease-in forwards;
+}
+
+@keyframes swipeBun {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(500px);
+  }
 }

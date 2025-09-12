@@ -8,7 +8,7 @@ import Check from "./img/check.svg";
 import Address from './img/locationSvg.svg';
 import DonationBox from './img/donationBox.svg';
 import aMina from './img/aMina.png';
-import CalenderImg from "./img/calendarBackdrop.svg"
+import CalenderImg from "./img/calendarBackdrop.png"
 import Cross from './img/cross.svg';
 import foreground from './img/fore.svg';
 import background from './img/back.svg';
@@ -165,7 +165,7 @@ export function Home() {
                     </svg>
                 </button>
 
-                <div className="crossContainer" style = {{ zIndex: 1}}>
+                <div className="crossContainer" style={{ zIndex: 1 }}>
                     {renderCross()}
                 </div>
 
@@ -178,15 +178,15 @@ export function Home() {
                 <Header textColor="var(--thirdly)" title="Today's events" color="var(--thirdly)" />
 
                 <span style={{ display: 'flex', width: '100%', justifyContent: 'space-evenly', zIndex: '5' }}>
-                    <div className="date" style={{ padding: '0 4rem 4rem 4rem', display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100%', width: 'min-content', background: 'orange' }}>
-                        <span style={{ display: 'flex', flexDirection: 'column' }}>
-                            {monthString}
-                            <t>{day}</t>
-                        </span>
+                    <div className="date" style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100%', width: 'min-content', padding: "var(--space)" }}>
+                        <ul style={{ display: 'flex', flexDirection: 'column', listStyle: "none", width: "100%", height: "100%", zIndex: 1, justifyContent: "center", alignContent: "center", padding: "0 1rem", background: "var(--thirdly)", borderRadius: "var(--space)", transform: "translateY(20px)" }}>
+                            <li>{monthString}</li>
+                            <li style={{ textAlign: "center" }}><t>{day}</t></li>
+                        </ul>
                         <img className="imgBox" src={CalenderImg} alt="calender" style={{ width: '100%' }} />
                     </div>
 
-                    <div className="tabs" style={{ display: 'flex', flexDirection: 'column', width: '80%', justifyContent: 'space-between'}}>
+                    <div className="tabs" style={{ display: 'flex', flexDirection: 'column', width: '80%', justifyContent: 'space-between' }}>
                         <EventTab color="var(--thirdly)" />
                     </div>
                 </span>

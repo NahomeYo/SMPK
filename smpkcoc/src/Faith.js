@@ -3,7 +3,6 @@ import "./index.css";
 import { useEffect, useState } from 'react';
 import { Header, Title } from './designKit/Navbar.js';
 import { Termtab } from './fetchData.js';
-import Jesus from "./img/jesus.svg";
 import pope from './img/pope.jpg';
 import PK from './img/popeKyrillos.svg';
 import SM from './img/stMina.svg';

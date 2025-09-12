@@ -49,7 +49,6 @@ export const Cross = (props) => {
 }
 
 export const Navbar = () => {
-    const [scroll, setScroll] = useState(false);
     const [dropdown, setDropdown] = useState(null);
     const [loading, setLoading] = useState({
         visible: false,
@@ -58,6 +57,10 @@ export const Navbar = () => {
         loadTime: null
     });
     const [offsetRepeat, setOffsetRepeat] = useState(false);
+    const [resize, setResize] = useState(1);
+    const [expandBurger, setExpandBurger] = useState(false);
+    const [scroll, setScroll] = useState();
+
     const navigate = useNavigate();
 
     const LoadingScreenLogo = () => {
@@ -783,69 +786,145 @@ export const Navbar = () => {
         }
     }
 
-    function hoverEffect(event) {
-        event.currentTarget.style.borderBottom = "5px solid var(--fourthly)"
-        event.currentTarget.style.transition = "border-Bottom 0.5s ease-in-out"
-        const text = event.currentTarget.querySelector('p')
+    useEffect(() => {
+        if (expandBurger === true) {
+            const burger = document.querySelector(".hamburgerMenu");
+            const menu = document.querySelector('.menuContainer');
+            const nav = document.querySelector('nav');
 
-        if (text) {
-            text.style.color = "var(--fourthly)"
-            text.style.transition = "color 1s ease-in-out"
+            if (nav) {
+                const bars = nav.querySelectorAll('span');
+
+                if (bars) {
+                    bars.forEach((b) => {
+                        b.style.opacity = 1;
+
+                        const text = b.querySelector('li p');
+
+                        if (text) {
+                            text.style.color = "var(--thirdly)";
+                        }
+                    })
+                }
+            }
+
+            if (menu) {
+                menu.style.transition = "all 0.5s ease-in";
+                menu.style.width = "100vw";
+                menu.style.height = "100vh";
+                menu.style.borderRadius = 0;
+                menu.style.padding = 0;
+            }
+
+            if (burger) {
+                burger.style.width = "100%";
+                burger.style.height = "100%";
+                burger.style.position = "absolute";
+                burger.style.left = 0;
+                burger.style.top = 0;
+                burger.style.margin = 0;
+                burger.style.padding = 0;
+                burger.style.alignItems = "start";
+                burger.style.justifyContent = "start";
+
+                const bars = burger.querySelectorAll('li');
+
+                if (bars) {
+                    let delay = 0;
+
+                    bars.forEach((b) => {
+                        delay += 0.1;
+                        b.classList.add('bunWipe');
+                        b.style.animationDelay = `${delay}s`;
+                        b.style.transformOrigin = "center center";
+                        b.style.opacity = 0;
+                    })
+                }
+            }
         }
-    }
 
-    function hoverRemove(event) {
-        event.currentTarget.style.borderBottom = ""
-        const text = event.currentTarget.querySelector('p')
+    }, [expandBurger]);
 
-        if (text) {
-            text.style.color = ""
-            text.style.transition = ""
+    window.addEventListener("resize", () => {
+        // desktop
+        if (window.innerWidth <= 1440 && window.innerWidth >= 900) {
+            setResize(1);
+            setExpandBurger(false);
         }
-    }
+
+        // ipad
+        if (window.innerWidth <= 900 && window.innerWidth >= 465) {
+            setResize(2);
+        }
+    })
 
     return (
         <>
             {loading.visible && loadingScreen()}
-            <nav className={scroll ? 'scrollDown' : 'scrollUp'}>
-                <span>
-                    <li
-                        className="link"
-                        onMouseOver={() => setDropdown(1)}
-                        onMouseLeave={() => setDropdown(null)}
-                    >
-                        <p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)' }}>Parish</p>
-                        {dropdownOptions(1)}
-                    </li>
-                    <li
-                        className="link"
-                        onMouseOver={() => setDropdown(2)}
-                        onMouseLeave={() => setDropdown(null)}
-                    >
-                        <p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)' }}>Faith</p>
-                        {dropdownOptions(2)}
-                    </li>
 
-                    <button onMouseOver={hoverEffect} onMouseLeave={hoverRemove} onClick={() => { activateLoad(6) }} className="link"><p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)' }}>Ministries</p></button>
-                    <button onMouseOver={hoverEffect} onMouseLeave={hoverRemove} onClick={() => { activateLoad(7) }} className="link"><p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)' }}>Calendar</p></button>
-                </span>
+            <div onClick={() => setExpandBurger(true)}
+                className="menuContainer" style={{
+                    position: "fixed",
+                    display: "flex",
+                    justifyContent: "end",
+                    left: 0,
+                    top: 0,
+                    zIndex: 999,
+                    width: (resize === 1) ? "100vw" : "4rem",
+                    height: (resize === 1) ? "" : "4rem",
+                    borderRadius: (resize === 1) ? 0 : "0 0 50% 0",
+                    overflow: (resize === 1) ? "visible" : "hidden",
+                    transition: "all 0.5s cubic-bezier(0.42, 0, 0.58, 1)",
+                }}>
 
-                <span>
-                    <div onClick={() => { activateLoad(8) }}><img className="smpkLogo" src={logo} alt="logo" /></div>
-                </span>
+                {(resize === 2) &&
+                    <ul className="hamburgerMenu" style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--border)", width: "100%", padding: "1rem", position: "relative", margin: 0, background: "var(--fifthly)", alignItems: "end", transition: "0.5s all ease-in", zIndex: 999 }}>
+                        <li style={{ width: "var(--sectionSpacing)", height: "var(--space)", background: "var(--thirdly)", borderRadius: "var(--border)", transition: "all 0.5s ease-in" }}></li>
+                        <li style={{ width: "var(--sectionSpacing)", height: "var(--space)", background: "var(--thirdly)", borderRadius: "var(--border)", transition: "all 0.5s ease-in" }}></li>
+                        <li style={{ width: "var(--sectionSpacing)", height: "var(--space)", background: "var(--thirdly)", borderRadius: "var(--border)", transition: "all 0.5s ease-in" }}></li>
+                    </ul>
+                }
 
-                <span>
-                    <button onMouseOver={hoverEffect} onMouseLeave={hoverRemove} onClick={() => { activateLoad(9) }} className="link"><p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)' }}>Gallery</p></button>
+                <nav style={{ flexDirection: (resize === 2) ? "column" : "row", width: "var(--pageWidth)", padding: "0 var(--paddingSides)", position: (resize === 1) ? "relative" : "absolute", pointerEvents: (resize === 2) ? "none" : "", height: 'min-content', zIndex: 999 }}>
+                    <span style={{ order: (resize === 2) ? 2 : 1, width: (resize === 2) ? "100%" : "auto", flexDirection: (resize === 2) && "column", opacity: (resize === 1) ? 1 : 0, transition: "all 0.1s ease-in" }}>
+                        <li
+                            className="link"
+                            onMouseOver={() => setDropdown(1)}
+                            onMouseLeave={() => setDropdown(null)}
+                        >
+                            <p>Parish</p>
+                            {dropdownOptions(1)}
+                        </li>
+                        <li
+                            className="link"
+                            onMouseOver={() => setDropdown(2)}
+                            onMouseLeave={() => setDropdown(null)}
+                        >
+                            <p>Faith</p>
+                            {dropdownOptions(2)}
+                        </li>
 
-                    <li>
-                        <a href="https://www.facebook.com/SMPKChurchSeattle/" target='_blank'><Facebook fill={(window.scrollY > 10) ? "var(--thirdly)" : "var(--sixthly)"} /></a>
-                        <a href="https://chat.whatsapp.com/I24sKttVnz1Dm3bsm6cnfe" target='_blank'><Whatsapp fill={(window.scrollY > 10) ? "var(--thirdly)" : "var(--sixthly)"} /></a>
-                        <a href="https://www.youtube.com/@st.minapopekyrillosvicocbo8845" target='_blank'><Youtube fill={(window.scrollY > 10) ? "var(--thirdly)" : "var(--sixthly)"} /></a>
-                    </li>
+                        <button onClick={() => { activateLoad(6) }} className="link"><p>Ministries</p></button>
+                        <button onClick={() => { activateLoad(7) }} className="link"><p>Calendar</p></button>
+                    </span>
 
-                    <p style={{ color: (window.scrollY > 10) ? 'var(--thirdly)' : 'var(--sixthly)', border: (window.scrollY > 10) ? '4px solid var(--thirdly)' : '4px solid var(--sixthly)', height: "min-content" }}>Donate</p>
-                </span>
-            </nav>
+                    <span style={{ order: (resize === 2) ? 1 : 2, width: (resize === 2) ? "100%" : "auto", position: "relative", overflow: "visible", display: 'flex', opacity: (resize === 1) ? 1 : 0, transition: "all 0.1s ease-in" }}>
+                        <img onClick={() => { activateLoad(8) }} className="smpkLogo" src={logo} alt="logo" style={{ width: "3rem", height: "3rem", overflow: "visible" }} />
+                    </span>
+
+                    <span style={{ order: 3, width: (resize === 2) ? "100%" : "auto", flexDirection: (resize === 2) && "column", opacity: (resize === 1) ? 1 : 0, transition: "all 0.1s ease-in" }}>
+                        <button onClick={() => { activateLoad(9) }} className="link"><p>Gallery</p></button>
+
+                        <li style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <a href="https://www.facebook.com/SMPKChurchSeattle/" target='_blank'><Facebook fill={expandBurger && "var(--thirdly)"} /></a>
+                            <a href="https://chat.whatsapp.com/I24sKttVnz1Dm3bsm6cnfe" target='_blank'><Whatsapp fill={expandBurger && "var(--thirdly)"} /></a>
+                            <a href="https://www.youtube.com/@st.minapopekyrillosvicocbo8845" target='_blank'><Youtube fill={expandBurger && "var(--thirdly)"} /></a>
+                        </li>
+
+                        <p style={{ color: (expandBurger) ? "var(--thirdly)" : "", border: (expandBurger) ? "4px solid var(--thirdly)" : "4px solid var(--sixthly)", height: "min-content" }}>Donate</p>
+                    </span>
+                </nav>
+            </div>
         </>
     )
 }
