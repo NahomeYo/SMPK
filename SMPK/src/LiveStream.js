@@ -3,6 +3,7 @@ import './index.css';
 import ReactPlayer from 'react-player';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Header } from './designKit/Navbar.js';
 
 export function LiveStream(props) {
     const [video, setVideo] = useState(null);
@@ -47,11 +48,11 @@ export function LiveStream(props) {
 
     const LiveVideo = () => {
         return (
-            <div style = {{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', position: 'relative', width: '100%'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', position: 'relative', width: "100%" }}>
                 {video ?
                     <>
-                        <div style = {{ background: 'red', borderRadius: 'var(--border)', padding: 'var(--space)', position: 'relative'}}>
-                            <h2 style = {{ textAlign: 'center'}}>Live now!</h2>
+                        <div style={{ borderRadius: 'var(--border)', position: 'relative' }}>
+                            <h2 style={{ textAlign: 'center' }}>Live now!</h2>
                         </div>
 
                         <ReactPlayer
@@ -63,7 +64,7 @@ export function LiveStream(props) {
                     :
                     <>
                         <ReactPlayer
-                            width="90vw"
+                            width="100%"
                             height="80vh"
                             playing={true}
                             url={latestVid} />
@@ -74,7 +75,8 @@ export function LiveStream(props) {
     }
 
     return (
-        <article className="article" style={{ paddingTop: props.height}} >
+        <article className="article" style={{ paddingTop: props.height }} >
+            <Header textColor="var(--sixthly)" title="Livestream" color="var(--sixthly)" />
             <LiveVideo />
         </article>
     )
@@ -82,8 +84,8 @@ export function LiveStream(props) {
 
 export default function init() {
     return (
-        <>
-            <LiveStream height = "" />
-        </>
+        <div style={{ margin: 0, padding: 0 }}>
+            <LiveStream height="" />
+        </div>
     )
 }

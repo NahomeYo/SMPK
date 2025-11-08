@@ -41,7 +41,7 @@ export const Location = (props) => {
     }, [])
 
     return (
-        <article className="article" style={{ paddingTop: props.height, width: '80vw', margin: '0vw 5vw' }} >
+        <article className="article" style={{ paddingTop: props.height }} >
             <Header textColor="var(--sixthly)" title="Location" color="var(--sixthly)" />
             <span style={{ display: 'flex', width: '100%', height: '100%', gap: 'var(--space)', position: 'relative', alignItems: 'start' }}>
                 <iframe

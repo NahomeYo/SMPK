@@ -263,8 +263,9 @@ export function Calendar(props) {
     }
 
     return (
-        <article className="article" style={{ paddingTop: props.height, width: 'var(--pageWidth)', margin: '0vw 5vw' }} >
-            <span className="lengthyTabOutline" style={{ width: '100%', paddingTop: '0.5rem', paddingLeft: 0, paddingRight: 0 }}>
+        <article className="article" style={{ paddingTop: props.height }} >
+            
+            <span className="lengthyTabOutline">
                 <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'end', flexDirection: 'column' }}>{[currentMonth, year]}</span>
 
                 <t>Calendar</t>

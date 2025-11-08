@@ -101,8 +101,8 @@ export const Ministries = (props) => {
     }
 
     return (
-        <article className="article" style={{ paddingTop: props.height, width: '80vw', margin: '0vw 5vw'}} >
-            <ul className="ministriesMenu" style={{ listStyle: 'none', position: 'relative', display: 'flex', width: '100%', justifyContent: 'center', gap: 'var(--space)' }}>
+        <div className="article" style={{ paddingTop: props.height }} >
+            <ul className="ministriesMenu" style={{ listStyle: 'none', position: 'relative', display: 'flex', justifyContent: 'space-between', margin: 0, padding: 0, gap: "var(--space)" }}>
                 <li onClick={() => { setType(1) }}><PrimaryButton backgroundColor="var(--secondary)" borderColor="transparent" textColor="var(--thirdly)" content="Theology" /></li>
                 <li onClick={() => { setType(2) }}><PrimaryButton backgroundColor="var(--secondary)" borderColor="transparent" textColor="var(--thirdly)" content="Hymns and Praises" /></li>
                 <li onClick={() => { setType(3) }}><PrimaryButton backgroundColor="var(--secondary)" borderColor="transparent" textColor="var(--thirdly)" content="Fellowship" /></li>
@@ -113,7 +113,7 @@ export const Ministries = (props) => {
                 {renderSection()}
             </div>
 
-        </article>
+        </div>
     )
 }
 

@@ -1,27 +1,25 @@
 import "./App.css";
 import "./index.css";
-import { useEffect, useState } from 'react';
-import { Header, Title } from './designKit/Navbar.js';
+import "./img/shapes.css";
+import { useEffect, useState, useCallback } from 'react';
+import { Header, Title, Cross } from './designKit/Navbar.js';
 import { Termtab } from './fetchData.js';
 import pope from './img/pope.jpg';
-import PK from './img/popeKyrillos.svg';
-import SM from './img/stMina.svg';
-import stAthan from './img/stAthanasius.svg';
+import PK from './img/popeKyrillos.png';
+import SM from './img/stMina.png';
 import { StMarkIcon } from "./img/StMarkIcon.js";
 import { HolyTrinity } from "./img/HolyTrinity.js";
-import { Map } from './img/map.js';
 
 export const Saints = (props) => {
     return (
         <>
-            <article className="article" style={{ paddingTop: props.height, width: 'var(--pageWidth)', margin: '0vw 5vw' }} >
+            <article className="article" style={{ paddingTop: props.height, width: 'var(--pageWidth)', margin: "var(--paddingSides)" }} >
                 <Header textColor="var(--sixthly)" title="Our Saints" color="var(--sixthly)" />
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
-                    <Title service="Saint Mina" time="The Wonderworker" crossFill="var(--sixthly)" h2Color="var(--sixthly)" textSize="1.25rem" />
-
-                    <span style={{ gridTemplateRows: 'repeat(2, auto)' }}>
-                        <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', position: "relative" }}>
+                <span style={{ gridTemplateRows: 'repeat(2, auto)' }}>
+                    <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', position: "relative" }}>
+                        <div>
+                            <Title service="Saint Mina" time="The Wonderworker" crossFill="var(--sixthly)" h2Color="var(--sixthly)" textSize="1.25rem" />
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
                                 <p className="introduction">St. Mina was born in Egypt, in the city of Niceous, to good Christian parents. The mother who could not have children would pray in front of St. Mary's icon, tearfully asking to be blessed with a child. Once while she was praying this prayer, she heard an "Amen". Thus when she finally had a son, she named him "Mina".
                                     St. Mina's father, Audexios, held an important position in the Roman Empire. When he died Mina was but fourteen years old. St. Mina then joined the army, and was given a very high position due to his father's prominence. St. Mina was sent by the army to Algeria to serve his country.
@@ -30,34 +28,34 @@ export const Saints = (props) => {
                                 <p className="introduction">Following this St. Mina was overwhelmed by a great desire to live in Heaven. In true faith and with devotion in his heart, he went to the Roman ruler declaring that he was a Christian. St. Mina was severely tortured with endless sufferings. His suffering attracted many pagans not only to Christianity but to martyrdom as well.
                                     The saint's hardhearted assassins tried to burn his young body but the fire had no effect upon it. Obtaining his discarded body, some Christian believers placed it upon the back of a camel and set out for the Western Desert. While on this journey, the camel suddenly stopped at a certain spot in the desert and could not forcibly be made to move. St. Mina was buried in this particular area. His present monastery marks this spot today at the end of the Lake of Marriute, close to the City of Alexandria.</p>
                             </div>
+                        </div>
 
-                            <div style={{ position: 'relative' }}>
-                                <img src={SM} style={{ position: 'absolute', top: '-10%', left: '50%', transform: "translate(-50%, 0%)", padding: 0, margin: 0 }} alt="stMina" />
-                            </div>
-                        </span>
-
-                        <p className="introduction">Several years after his burial, shepherds were tending their sheep at this location and a very sick little lamb fell to the ground. The shepherds were astonished that the sickly little lamb after falling on this particular spot raised itself completely cured. The story quickly spread throughout the countryside and many sick people came to the spot where the small lamb was cured. Just simply lying on this spot cured many.</p>
+                        <div style={{ position: 'relative', display: "flex", alignItems: "start", justifyContent: "center" }}>
+                            <img src={SM} style={{ position: 'relative', padding: 0, margin: 0, height: "min-content" }} alt="stMina" />
+                        </div>
                     </span>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
-                        <Title service="Pope Saint Kyrillos VI (Cyril VI)" time="116th Pope of Alexandria" crossFill="var(--sixthly)" h2Color="var(--sixthly)" textSize="1.25rem" />
+                    <p className="introduction">Several years after his burial, shepherds were tending their sheep at this location and a very sick little lamb fell to the ground. The shepherds were astonished that the sickly little lamb after falling on this particular spot raised itself completely cured. The story quickly spread throughout the countryside and many sick people came to the spot where the small lamb was cured. Just simply lying on this spot cured many.</p>
+                </span>
 
-                        <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
-                                <p className='introduction'>Pope Kyrillos the 6th was born on August 2nd, 1902 – named Azer Youssef Atta to a God – loving family rooted in prayer and service in Damanhour, Egypt.  At a very young age, Azer was attracted to the beauty of holiness and solitude.  It was said that he had the majority of the Gospel of St. John memorized at a very early age in which he would happily recite the beautiful verses to his teachers and classmates, who ended up picking them up themselves.
-                                    When Azer was only about 7 years of age, his mother Esther, passed away.  And she gave him a very interesting gift before her passing.  That gift was an introduction to <q>St. Mina the Martyr & Wonderworker.</q></p>
-                                <p className="introduction">Azer continued in the love of God and was called to the monastic life in 1927 at the Baramous Monastery where he was ordained with the name Fr. Mina El-Baramousy.   Interestingly, the name Mina that he was named after was not the same St. Mina the Martyr and Wonderworker that he loved.  He was named after St. Mina the monk.  But we can only help to realize that the name Mina was chasing after him.  Fr. Mina El-Baramousy continued to grow strong in spirit and God gave him a multitude of talents in which the most popular of them are the gift of performing miracles. He is not considered a saint because of this God-given talent but, he is a saint because of his level of holiness and his great love for God. In his life, his virtues that gave him the ability of carrying out miracles by the name of God, was his life of prayer. </p>
-                                <p className="introduction"> In 1944, while Fr. Mina was considered an urban monk living in St. Mina’s church in Old Cairo in which he built, he was appointed as the Head of the monastery of St. Samuel the Confessor.  During this time, students would come to him to get his spiritual guidance.  Among the students were known people such as the future Pope Shenouda III, the future Fr. Matthew the Poor, the future Bishop Domadios of Giza, and the future Bishop Athanasius of Beni-Seuf, who were all vitally important in the Sunday School Movement which would prove to be instrumental in the revitalization of the Coptic Orthodox Church. </p>
-                            </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
+                    <Title service="Pope Saint Kyrillos VI (Cyril VI)" time="116th Pope of Alexandria" crossFill="var(--sixthly)" h2Color="var(--sixthly)" textSize="1.25rem" />
 
-                            <div style={{ position: 'relative' }}>
-                                <img src={PK} style={{ position: 'absolute', top: '-10%', left: '50%', transform: "translate(-50%, 0%)", padding: 0, margin: 0 }} alt="popeK" />
-                            </div>
-                        </span>
+                    <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
+                            <p className='introduction'>Pope Kyrillos the 6th was born on August 2nd, 1902 – named Azer Youssef Atta to a God – loving family rooted in prayer and service in Damanhour, Egypt.  At a very young age, Azer was attracted to the beauty of holiness and solitude.  It was said that he had the majority of the Gospel of St. John memorized at a very early age in which he would happily recite the beautiful verses to his teachers and classmates, who ended up picking them up themselves.
+                                When Azer was only about 7 years of age, his mother Esther, passed away.  And she gave him a very interesting gift before her passing.  That gift was an introduction to <q>St. Mina the Martyr & Wonderworker.</q></p>
+                            <p className="introduction">Azer continued in the love of God and was called to the monastic life in 1927 at the Baramous Monastery where he was ordained with the name Fr. Mina El-Baramousy.   Interestingly, the name Mina that he was named after was not the same St. Mina the Martyr and Wonderworker that he loved.  He was named after St. Mina the monk.  But we can only help to realize that the name Mina was chasing after him.  Fr. Mina El-Baramousy continued to grow strong in spirit and God gave him a multitude of talents in which the most popular of them are the gift of performing miracles. He is not considered a saint because of this God-given talent but, he is a saint because of his level of holiness and his great love for God. In his life, his virtues that gave him the ability of carrying out miracles by the name of God, was his life of prayer. </p>
+                            <p className="introduction"> In 1944, while Fr. Mina was considered an urban monk living in St. Mina’s church in Old Cairo in which he built, he was appointed as the Head of the monastery of St. Samuel the Confessor.  During this time, students would come to him to get his spiritual guidance.  Among the students were known people such as the future Pope Shenouda III, the future Fr. Matthew the Poor, the future Bishop Domadios of Giza, and the future Bishop Athanasius of Beni-Seuf, who were all vitally important in the Sunday School Movement which would prove to be instrumental in the revitalization of the Coptic Orthodox Church. </p>
+                        </div>
 
-                        <p className="introduction"> In 1959, Fr. Mina the Hermit was ordained as Pope Kyrillos the 6th, the 116th Pope of the Coptic Orthodox Church.  In his 12 years as a Pope, Pope Kyrillos the 6th became the lighthouse of the church, reflecting the Light of God throughout all his work and service. He reinstituted the importance of theological and spiritual knowledge in the churches and monasteries.  He renovated the glorious monasteries of the Egyptian deserts and the cathedral of St. Mark the Evangelist in Cairo.  He brought back the relics of St. Mark from Italy, and he established churches in the United States of America, Europe, Canada, Australia, and Africa.  Additionally, during his time as Pope, the Blessed Virgin Mary appeared for all to see her on April 2nd, 1968 at St. Mary Coptic Orthodox Church in Zeitoun, Egypt. </p>
-                        <p className="introduction"> Our father, St. Kyrillos the 116th Pope of the Church of Alexandria departed to the Heavenly Jerusalem on March 9th, 1971 and was canonized as a Saint in the Coptic Orthodox Church on June 20th, 2013. May his prayers be with us all. Amen. </p>
-                    </div>
+                        <div style={{ position: 'relative' }}>
+                            <img src={PK} style={{ position: 'absolute', top: '50%', left: '50%', transform: "translate(-50%, -50%)", padding: 0, margin: 0 }} alt="stMina" />
+                        </div>
+                    </span>
+
+                    <p className="introduction"> In 1959, Fr. Mina the Hermit was ordained as Pope Kyrillos the 6th, the 116th Pope of the Coptic Orthodox Church.  In his 12 years as a Pope, Pope Kyrillos the 6th became the lighthouse of the church, reflecting the Light of God throughout all his work and service. He reinstituted the importance of theological and spiritual knowledge in the churches and monasteries.  He renovated the glorious monasteries of the Egyptian deserts and the cathedral of St. Mark the Evangelist in Cairo.  He brought back the relics of St. Mark from Italy, and he established churches in the United States of America, Europe, Canada, Australia, and Africa.  Additionally, during his time as Pope, the Blessed Virgin Mary appeared for all to see her on April 2nd, 1968 at St. Mary Coptic Orthodox Church in Zeitoun, Egypt. </p>
+                    <p className="introduction"> Our father, St. Kyrillos the 116th Pope of the Church of Alexandria departed to the Heavenly Jerusalem on March 9th, 1971 and was canonized as a Saint in the Coptic Orthodox Church on June 20th, 2013. May his prayers be with us all. Amen. </p>
                 </div>
             </article >
         </>
@@ -65,7 +63,39 @@ export const Saints = (props) => {
 }
 
 export const COC = (props) => {
-    const [resize, setResize] = useState(null);
+    const [resize, setResize] = useState(() => {
+        if (typeof window !== 'undefined') {
+            if (window.innerWidth <= 1440 && window.innerWidth >= 1000) return 1;
+            if (window.innerWidth <= 1000 && window.innerWidth >= 465) return 2;
+        }
+        return 1;
+    });
+
+    const handleResize = useCallback(() => {
+        const width = window.innerWidth;
+
+        if (width > 1440) {
+            setResize(1);
+        } else if (width <= 1440 && width >= 1000) {
+            setResize(1);
+        } else if (width <= 1000 && width >= 465) {
+            setResize(2);
+        } else {
+            setResize(2);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("orientationchange", handleResize);
+        window.addEventListener("focus", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("orientationchange", handleResize);
+            window.removeEventListener("focus", handleResize);
+        };
+    }, [handleResize]);
 
     useEffect(() => {
         const lengthyTabOutline = document.querySelectorAll('.lengthyTab');
@@ -121,6 +151,7 @@ export const COC = (props) => {
             gridContainer.style.overflow = 'hidden';
             gridContainer.style.position = 'relative';
             gridContainer.style.display = 'flex';
+            gridContainer.style.flexDirection = (resize === 2) ? "column" : "row";
             gridContainer.style.flexWrap = 'nowrap';
             gridContainer.style.gap = 'calc(var(--space) / 2)';
             gridContainer.style.justifyContent = 'center';
@@ -144,7 +175,7 @@ export const COC = (props) => {
 
                 sacBox.style.width = `calc(100% / ${totalItems})`;
                 sacBox.style.filter = 'sepia(100%)';
-                sacBox.style.transition = 'all 0.3s ease';
+                sacBox.style.transition = 'all 0.3s var(--motion)';
                 sacBox.style.position = 'relative';
 
                 gridContainer.appendChild(sacBox);
@@ -271,40 +302,117 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
         }
     }
 
-    const figuresContainer = document.querySelector('.figures');
-    const hand = document.querySelector('.figures div:nth-of-type(1)');
-    const dove = document.querySelector('.figures div:nth-of-type(2)');
-    const Jesus = document.querySelector('.figures div:nth-of-type(3)');
+    useEffect(() => {
+        const figures = document.querySelectorAll('.figures div');
+        const rightHand = document.querySelector('.Right_hand');
+        const leftHand = document.querySelector('.Left_hand');
+        const body = document.querySelector('.Body');
+        const head = document.querySelector('.Head');
+        const scroll = document.querySelector('.Scroll');
+        const angel = document.querySelector('.Angel');
+        const waters = document.querySelectorAll(".water");
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth <= 1440 && window.innerWidth >= 900) {
-            setResize(1);
-        } else if (window.innerWidth <= 900 && window.innerWidth >= 465) {
-            setResize(2);
-            if (figuresContainer && hand && dove) {
-                figuresContainer.style.flexDirection = "column";
-                figuresContainer.style.bottom = "0";
-                figuresContainer.style.alignItems = "center";
-                figuresContainer.style.justifyContent = "center";
-                figuresContainer.style.width = "min-content";
-                hand.style.width = '150px';
-                hand.style.height = '150px';
-                dove.style.width = '150px';
-                dove.style.height = '150px';
-                Jesus.style.width = '400px';
-                Jesus.style.height = '400px';
-            }
-        }
-    })
+        let stMaryArray = [rightHand, leftHand, body, head, scroll, angel];
+
+        const observer = new IntersectionObserver(entries => {
+            let delay = 0;
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.closest('.figures')) {
+                        entry.target.classList.add('popUpAnim');
+                        entry.target.style.animationDelay = `${delay}s`;
+                        delay += 0.5;
+
+                    } else if (stMaryArray.includes(entry.target)) {
+
+                        if (entry.target === (stMaryArray[0])) {
+                            entry.target.classList.add('rightHandAnim');
+                        }
+
+                        if (entry.target === (stMaryArray[1])) {
+                            entry.target.classList.add('leftHandAnim');
+                        }
+
+                        if (entry.target === (stMaryArray[2])) {
+                            entry.target.classList.add('bodyAnim');
+                        }
+
+                        if (entry.target === (stMaryArray[3])) {
+                            entry.target.classList.add('headAnim');
+                        }
+
+                        if (entry.target === (stMaryArray[4])) {
+                            entry.target.classList.add('scrollAnim');
+                        }
+
+                        if (entry.target === (stMaryArray[5])) {
+                            entry.target.classList.add('angelFloatAnim');
+                        }
+
+                    } else if (entry.target.closest('.water')) {
+                        if (entry.target === (waters[0])) {
+                            entry.target.classList.add('slideLeftAnim');
+                        }
+
+                        if (entry.target === (waters[1])) {
+                            entry.target.classList.add('slideRightAnim');
+                        }
+
+                        if (entry.target === (waters[2])) {
+                            entry.target.classList.add('slideLeftAnim');
+                        }
+                    }
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        figures.forEach((f) => {
+            observer.observe(f);
+        });
+
+        stMaryArray.forEach((f) => {
+            observer.observe(f);
+        });
+
+        waters.forEach((w) => {
+            observer.observe(w);
+        })
+    }, [])
+
+    const leftTimeSlot = (cardInfo) => {
+        return (
+            <li className="leftSlot" style={{ overflow: 'visible', position: 'relative', display: 'flex', flexDirection: 'row' }}>
+                <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "4rem 0rem 0rem 4rem", height: 'min-content' }}>
+                    {cardInfo}
+                </li>
+                <ol></ol>
+            </li>
+        )
+    }
+
+    const rightTimeSlot = (cardInfo) => {
+        return (
+            <li className="rightSlot" style={{ overflow: 'visible', position: 'relative', display: 'flex', flexDirection: 'row', width: "100%" }}>
+                <ol></ol>
+                <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "0 4rem 4rem 0", height: 'min-content' }}>
+                    {cardInfo}
+                </li>
+            </li>
+        )
+    }
 
     return (
         <>
-            <article style={{ height: 'min-content', overflow: 'visible', paddingTop: props.height }} >
-                <article style={{ display: 'flex', flexDirection: 'column', height: 'min-content', gap: 'var(--space)', width: '100vw' }}>
+            <article className="article" style={{ paddingTop: props.height, width: "100vw", margin: 0 }} >
+                <span style={{ display: "flex", justifyContent: "center", alignContent: "center", height: 'min-content', gap: 'var(--space)', flexDirection: "column", margin: 0 }}>
                     <Header textColor="var(--sixthly)" title="The Coptic Orthodox Church" color="var(--sixthly)" />
 
                     {resize === 2 ?
-                        <span style={{ listStyle: 'none', display: 'grid', gridTemplateRows: '1fr auto', width: 'var(--pageWidth)', padding: '0 var(--paddingSides)', marginBottom: 'var(--space)', gap: 'var(--space)' }}>
+                        <span style={{ listStyle: 'none', display: 'grid', gridTemplateRows: '1fr auto', width: 'var(--pageWidth)', padding: 'var(--paddingSides)', marginBottom: 'var(--space)', gap: 'var(--space)' }}>
                             <li style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr' }}>
                                 <li style={{ position: 'relative' }}>
                                     <Title service="Introduction" time={<p className="creed" style={{ color: 'var(--fifthly)', textAlign: 'justify', textJustify: 'inter-word' }}>The Coptic Church was established in the name of the Lord <b style={{ color: 'var(--sixthly)', fontWeight: 'bolder' }} >Jesus Christ</b> by <b style={{ color: 'var(--sixthly)', fontWeight: 'bolder' }}>St. Mark the Evangelist</b> in the city of Alexandria around 43 A.D. The church adheres to the Nicene Creed.</p>} crossFill="var(--fifthly)" h2Color="var(--fifthly)" textSize="" />
@@ -319,7 +427,7 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
 
                         :
 
-                        <span style={{ listStyle: 'none', display: 'grid', gridTemplateRows: '1fr', gridTemplateColumns: '1fr 1.25fr', width: 'var(--pageWidth)', padding: '0 var(--paddingSides)', marginBottom: 'var(--space)' }}>
+                        <span style={{ listStyle: 'none', display: 'grid', gridTemplateRows: '1fr', gridTemplateColumns: '1fr 1.25fr', width: 'var(--pageWidth)', padding: 'var(--paddingSides)', marginBottom: 'var(--space)' }}>
                             <li style={{ position: 'relative' }}>
                                 <Title service="Introduction" time={<p className="creed" style={{ color: 'var(--fifthly)', textAlign: 'justify', textJustify: 'inter-word' }}>The Coptic Church was established in the name of the Lord <b style={{ color: 'var(--sixthly)', fontWeight: 'bolder' }} >Jesus Christ</b> by <b style={{ color: 'var(--sixthly)', fontWeight: 'bolder' }}>St. Mark the Evangelist</b> in the city of Alexandria around 43 A.D. The church adheres to the Nicene Creed. St. Athanasius (296-373 A.D.), the twentieth Pope of the Coptic Church effectively defended the Doctrine of the Lord Jesus Christ’s Divinity at the Council of Nicea in 325 A.D. His affirmation of the doctrine earned him the title; “Father of Orthodoxy” and St. Athanasius “the Apostolic</p>} crossFill="var(--fifthly)" h2Color="var(--fifthly)" textSize="" />
                             </li>
@@ -329,7 +437,7 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
                         </span>
                     }
 
-                    <div className='doo' style={{ background: 'var(--secondary)', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: 'var(--space)', zIndex: 1, width: 'var(--pageWidth)', padding: 'var(--space) var(--paddingSides)', height: 'min-content' }}>
+                    <div className='doo' style={{ background: 'var(--secondary)', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: 'var(--space)', zIndex: 1, height: 'min-content', width: "var(--pageWidth)", padding: "var(--paddingSides)" }}>
                         <Header title="The Holy Trinity" color="var(--thirdly)" />
 
                         <div style={{ position: 'relative', zIndex: '2' }}>
@@ -362,96 +470,66 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
                         <HolyTrinity />
                     </div>
 
-                    <span style={{ listStyle: 'none', width: 'var(--pageWidth)', padding: 'var(--space) var(--paddingSides)', height: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--space)' }}>
+                    <span style={{ listStyle: 'none', height: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--space)', width: "var(--pageWidth)", padding: "var(--paddingSides)" }}>
                         <Header textColor="var(--sixthly)" title="Brief History" color="var(--sixthly)" />
-                        <div className="timeline" style={{ display: 'flex', position: 'relative', height: '100%', width: '100%' }}>
+                        <div className="timeline" style={{ display: 'flex', position: 'relative' }}>
                             <span>
 
-                                <li style={{ overflow: 'visible', position: 'relative' }}>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "4rem 0rem 0rem 4rem", height: 'min-content' }}>
-                                        <Title crossFill="var(--sixthly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>33–100 A.D.</h1>} time={<p style={{ color: 'var(--primary)', textAlign: "start" }}>Christianity spread across the Roman Empire. The Church established four main centers: <b style={{ fontWeight: 'bolder', color: 'var(--thirdly)' }}>Jerusalem, Antioch, Alexandria, and Rome.</b> These were the early leadership hubs of the Christian Church.</p>} crossFill='var(--thirdly)' />
-                                        <Map />
-                                    </li>
-                                    <ol></ol>
-                                    <ul></ul>
-                                </li>
+                                {leftTimeSlot(<Title crossFill="var(--sixthly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>33–100 A.D.</h1>} time={<p style={{ color: 'var(--primary)', textAlign: "start" }}>Christianity spread across the Roman Empire. The Church established four main centers: <b style={{ fontWeight: 'bolder', color: 'var(--thirdly)' }}>Jerusalem, Antioch, Alexandria, and Rome.</b> These were the early leadership hubs of the Christian Church.</p>} crossFill='var(--thirdly)' />)}
 
                                 <ul></ul>
 
-                                <li style={{ overflow: 'visible' }}>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "4rem 0rem 0rem 4rem" }}>
-                                        <Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>431 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Led by St. Cyril of Alexandria, the Council of Ephesus rejected the teachings of Nestorius and defended the title of Mary as "Mother of God.</p>} />
-                                    </li>
-                                    <ol></ol>
-                                    <ul></ul>
-                                </li>
+                                {(resize === 2) &&
+                                    <>
+                                        {leftTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>325 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Nicea was held to reject the false teaching that Jesus was not entirely God. St. Athanasius of Alexandria defended the truth of Christ's divinity, and the Nicene Creed was written, still used today by the Coptic Church.</p>} />)}
+                                        <ul></ul>
+                                    </>
+                                }
+
+                                {leftTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>330 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Constantinople became the fifth Patriarchal center, joining the unified Christian Church.</p>} />)}
 
                                 <ul></ul>
 
-                                <li style={{ overflow: 'visible' }}>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "4rem 0rem 0rem 4rem" }}>
-                                        <Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>381 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Constantinople confirmed the Holy Spirit is fully God, completing the Nicene Creed.</p>} />
-                                    </li>
-                                    <ol></ol>
-                                    <ul></ul>
-                                </li>
+                                {(resize === 2) &&
+                                    <>
+                                        {leftTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>381 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Constantinople confirmed the Holy Spirit is fully God, completing the Nicene Creed.</p>} />)}
+                                        <ul></ul>
+                                    </>
+                                }
+
+                                {leftTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>431 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Led by St. Cyril of Alexandria, the Council of Ephesus rejected the teachings of Nestorius and defended the title of Mary as "Mother of God.</p>} />)}
 
                                 <ul></ul>
 
-                                <li style={{ overflow: 'visible' }}>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "4rem 0rem 0rem 4rem" }}>
-                                        <Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>1990s</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Coptic Orthodox leaders and Eastern Orthodox leaders met and agreed that both sides believe Jesus is fully God and fully human in one nature. This agreement is still awaiting full recognition.</p>} />
-                                    </li>
-                                    <ol></ol>
-                                    <ul></ul>
-                                </li>
+                                {(resize === 2) &&
+                                    <>
+                                        {leftTimeSlot(<Title crossFill='var(--thirdly)' service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>451 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>At the Council of Chalcedon, a split occurred. Pope Dioscorus of Alexandria rejected a new definition of Christ having "two natures." The Coptic Orthodox Church held to the belief in one united nature of Christ and became a separate branch, now called Oriental Orthodox.</p>} />)}
+                                        <ul></ul>
+                                    </>
+                                }
+
+                                {leftTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>1990s</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Coptic Orthodox leaders and Eastern Orthodox leaders met and agreed that both sides believe Jesus is fully God and fully human in one nature. This agreement is still awaiting full recognition.</p>} />)}
 
                             </span>
 
-                            <line></line>
+                            {(resize !== 2) &&
+                                <span>
+                                    <ul></ul>
 
-                            <span>
+                                    {rightTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>325 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Nicea was held to reject the false teaching that Jesus was not entirely God. St. Athanasius of Alexandria defended the truth of Christ's divinity, and the Nicene Creed was written, still used today by the Coptic Church.</p>} />)}
 
-                                <ul></ul>
+                                    <ul></ul>
 
-                                <li style={{ overflow: 'visible' }}>
-                                    <ul style={{ left: 0, transform: 'translateX(-40px)' }}></ul>
-                                    <ol></ol>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "0rem 4rem 4rem 0rem" }}>
-                                        <Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>330 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>Constantinople became the fifth Patriarchal center, joining the unified Christian Church.</p>} />
-                                    </li>
-                                </li>
+                                    {rightTimeSlot(<Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>381 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Constantinople confirmed the Holy Spirit is fully God, completing the Nicene Creed.</p>} />)}
 
-                                <ul></ul>
+                                    <ul></ul>
 
-
-                                <li style={{ overflow: 'visible' }}>
-                                    <ul style={{ left: 0, transform: 'translateX(-40px)' }}></ul>
-                                    <ol></ol>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "0rem 4rem 4rem 0rem" }}>
-                                        <Title crossFill="var(--thirdly)" service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>325 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>The Council of Nicea was held to reject the false teaching that Jesus was not entirely God. St. Athanasius of Alexandria defended the truth of Christ's divinity, and the Nicene Creed was written, still used today by the Coptic Church.</p>} />
-
-                                        <li style={{ position: 'relative', width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                            <img src={stAthan} />
-                                        </li>
-                                    </li>
-                                </li>
-
-                                <ul></ul>
-
-                                <li style={{ overflow: 'visible' }}>
-                                    <ul style={{ left: 0, transform: 'translateX(-40px)' }}></ul>
-                                    <ol></ol>
-                                    <li style={{ display: 'flex', flexDirection: 'row', flexWrap: 'none', background: 'var(--secondary)', border: 'var(--border) solid var(--fifthly)', borderRadius: "0rem 4rem 4rem 0rem" }}>
-                                        <Title crossFill='var(--thirdly)' service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>451 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>At the Council of Chalcedon, a split occurred. Pope Dioscorus of Alexandria rejected a new definition of Christ having "two natures." The Coptic Orthodox Church held to the belief in one united nature of Christ and became a separate branch, now called Oriental Orthodox.</p>} />
-                                    </li>
-                                </li>
-
-                            </span>
+                                    {rightTimeSlot(<Title crossFill='var(--thirdly)' service={<h1 style={{ color: 'var(--thirdly)', textAlign: 'start' }}>451 A.D.</h1>} time={<p style={{ textAlign: 'start', color: 'var(--secondary)' }}>At the Council of Chalcedon, a split occurred. Pope Dioscorus of Alexandria rejected a new definition of Christ having "two natures." The Coptic Orthodox Church held to the belief in one united nature of Christ and became a separate branch, now called Oriental Orthodox.</p>} />)}
+                                </span>}
                         </div>
                     </span>
 
-                    <span style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', width: 'var(--pageWidth)', padding: 'var(--space) var(--paddingSides)' }}>
+                    <span style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', width: "var(--pageWidth)", padding: "var(--paddingSides)" }}>
                         <Header textColor="var(--fifthly)" title="Terms" color="var(--fifthly)" />
 
                         <Termtab
@@ -476,16 +554,16 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
                         />
                     </span>
 
-                    <span style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', width: 'var(--pageWidth)', padding: 'var(--space) var(--paddingSides)' }} className="sacramentsSection">
+                    <span style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space)', width: "var(--pageWidth)", padding: "var(--paddingSides)" }} className="sacramentsSection">
                         <Header textColor="var(--fifthly)" title="Sacraments" color="var(--fifthly)" />
                         <p style={{ color: 'var(--secondary)' }}>The Seven Sacraments of the Church are the channels by which we receive the graces and blessings of the Holy Spirit.<br></br><b style={{ color: 'var(--sixthly)', textDecoration: 'none' }}> - H.G. Bishop Mettaous, Bishop and Abbot of St. Mary Monastery, El-Sorian</b></p>
 
                         <span style={{ flexDirection: resize === 2 ? 'column' : 'row' }}>
                         </span>
                     </span>
-                </article >
+                </span >
 
-                <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--secondary)', height: 'min-content', gap: 'var(--space)', overflow: 'hidden', width: 'var(--pageWidth)', padding: 'var(--space) var(--paddingSides)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--secondary)', height: 'min-content', gap: 'var(--space)', overflow: 'hidden', width: "80%", padding: "var(--paddingSides)" }}>
                     <Header title="Our Creed" color="var(--thirdly)" />
 
                     <span>
@@ -494,8 +572,6 @@ And in one holy, catholic and apostolic church. We confess one baptism for the r
 
                     <Title service="Creed" h2Color="var(--thirdly)" time={creedText} crossFill="var(--thirdly)" />
                 </div>
-
-                <img src={Jesus} style={{ top: '0', right: '0', position: 'absolute', opacity: '50%', zIndex: -1, width: '20vw' }} alt="Jesus" />
             </article >
         </>
     )
@@ -536,16 +612,16 @@ export const Pope = (props) => {
     }, [])
 
     return (
-        <article className="article" style={{ paddingTop: props.height, width: 'var(--pageWidth)', margin: '0vw 5vw' }} >
+        <article className="article" style={{ paddingTop: props.height }} >
             <div class="lengthyTabOutline">
                 <img style={{ width: '4rem', height: '4rem', marginBottom: 'var(--space)', borderRadius: 'calc(var(--space) * 5)' }} src={pope} alt="pope" />
                 <li>
                     <h1 style={{ color: 'var(--sixthly)' }}>POPE TAWADROS II OF ALEXANDRIA</h1>
-                    <p style={{ color: 'var(--sixthly)' }}>The 118th and current Pope of the Coptic Orthodox Church</p>
+                    <p style={{ textAlign: "center", color: 'var(--sixthly)' }}>The 118th and current Pope of the Coptic Orthodox Church</p>
                 </li>
             </div>
 
-            <b style={{ color: 'var(--sixthly)', fontWeight: 'bold' }}>“I put myself in the hands of Christ, who is the true leader of the Church.” — <i style={{ fontSize: ' 0.6rem' }}>Pope Tawadros II of Alexandria</i></b>
+            <b style={{ color: 'var(--sixthly)', fontWeight: 'bold', textAlign: "center" }}>“I put myself in the hands of Christ, who is the true leader of the Church.” — <i style={{ fontSize: ' 0.6rem' }}>Pope Tawadros II of Alexandria</i></b>
 
             <p className="creed" style={{ whiteSpace: 'wrap', color: 'var(--fifthly)' }}>His Holiness Pope Tawadros II was born Wagih Sobhy Baky Soliman on November 4th, 1952 in Mansoura. His father was an irrigation engineer and his family moved around during his childhood from Mansoura to Sohag and then to Damanhour. He received his bachelor’s degree in pharmacy in 1975 from Alexandria University and earned a fellowship for the World Health Organization from the British International Health Institute in England in 1985. He attended the Coptic Seminary and graduated in 1983. He then worked as a manager in a pharmaceutical company in Damanhour that was owned by the Ministry of Health.</p>
             <p className="creed" style={{ whiteSpace: 'wrap', color: 'var(--fifthly)' }}>His Holiness’s life has always revolved around church since his youth; he wished to live the life of monasticism. He entered the Monastery of St. Pishoy in Wadi Elnatroun on August 20th, 1986 and remained a brother for two years. He was ordained a monk on July 31, 1988 and after a year he was ordained a priest on December 23, 1989. Two months after, H.H. Pope Tawadros started serving with H.E. Metropolitan Pakhomius of Beheira on February 15th, 1990. He was ordained a bishop on June 15th, 1997 by H.H. the Late Pope Shenouda III as a General Bishop assisting H.E. Metropolitan Pakhomius. His Holiness focused on childhood whether it was in the country-wide children’s festival as well when he was in charge of the children’s committee in the Holy Synod. Before assuming the papacy, H.H. wrote twelve books.</p>

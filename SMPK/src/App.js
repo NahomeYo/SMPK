@@ -11,21 +11,24 @@ import { Footer } from './Footer.js';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [navHeight, setNavHeight] = useState('0px');
+  const [navHeight, setNavHeight] = useState(null);
 
   useEffect(() => {
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector('.menuContainer');
 
     if (nav) {
-      const navStyles = window.getComputedStyle(nav);
-      const navHeightVal = navStyles.getPropertyValue('height');
-      setNavHeight(navHeightVal);
+      const navHeightVal = nav.getBoundingClientRect().height + "px"
+      const articlePaddingTop = (parseInt(navHeightVal) + 50) + "px";
+      setNavHeight(articlePaddingTop);
     }
   }, [])
 
   return (
-    <>
-      <Navbar />
+    <div style = {{ position: "relative"}}>
+      <div style={{ zIndex: 999, position: "fixed", overflow: ""}}>
+        <Navbar />
+      </div>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Ministries" element={<Ministries height={navHeight} />} />
@@ -38,7 +41,7 @@ function App() {
         <Route path="/Gallery" element={<Gallery height={navHeight} />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

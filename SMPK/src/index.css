@@ -6,14 +6,15 @@
   --primary: #C2AB4D;
   --secondary: #C2AB4D;
   --thirdly: #F8E79F;
-  --fourthly: #f4eabc;
+  --fourthly: #fff6ce;
   --fifthly: #706444;
   --sixthly: #2f1b14;
   --sectionSpacing: 2rem;
   --space: 0.5rem;
   --border: 0.2rem;
-  --paddingSides: 10vw;
+  --paddingSides: 0 10vw;
   --pageWidth: 80vw;
+  --motion: ease-in-out;
 }
 
 t {
@@ -134,14 +135,37 @@ b {
   gap: var(--space);
 }
 
-@media screen and (max-width: 1440px) and (min-width: 900px) {
+primaryButton {
+  border: 4px solid var(--sixthly);
+  color: var(--sixthly);
+  border-radius: var(--border);
+  font-family: BoucherieBlockBold;
+  display: flex;
+  align-self: center;
+  padding: var(--border);
+  margin: 0 var(--space);
+}
+
+secondaryButton {
+  border: 4px solid var(--thirdly);
+  color: var(--thirdly);
+  border-radius: var(--border);
+  font-family: BoucherieBlockBold;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: var(--border);
+  width: 100%;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1000px) {
   * {
     font-size: 30px;
   }
 }
 
-@media screen and (max-width: 900px) and (min-width: 465px) {
+@media screen and (max-width: 1000px) and (min-width: 465px) {
   * {
-    font-size: 30px;
+    font-size: 25px;
   }
 }

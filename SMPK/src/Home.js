@@ -1,7 +1,7 @@
 import './App.css';
 import './index.css';
-import PK from './img/popeKyrillos.svg';
-import SM from './img/stMina.svg';
+import PK from './img/popeKyrillos.png';
+import SM from './img/stMina.png';
 import Phone from './img/callSvg.svg';
 import Mail from './img/mailSvg.svg';
 import Check from "./img/check.svg";
@@ -132,7 +132,7 @@ export function Home() {
         for (let i = 0; i < slideshow.length; i++) {
             crosses.push(<img key={i}
                 src={Cross}
-                style={{ width: i === currentSlide ? '50px' : '', transition: 'width 0.5s ease', opacity: i === currentSlide ? '100%' : '75%' }}
+                style={{ width: i === currentSlide ? '50px' : '', transition: 'width 0.5s var(--motion)', opacity: i === currentSlide ? '100%' : '75%' }}
                 alt="crossIcon" />);
         }
 
@@ -191,8 +191,13 @@ export function Home() {
                     </div>
                 </span>
 
-                <img className="PK" style={{ width: "30%" }} src={PK} alt="PK" />
-                <img className="SM" style={{ width: "30%" }} src={SM} alt="SM" />
+                <div style={{ width: "30%", position: "absolute", left: 0 }}>
+                    <img className="PK" style={{ transform: "translateX(-50px)" }} src={PK} alt="PK" />
+                </div>
+
+                <div style={{ width: "30%", position: "absolute", right: 0 }}>
+                    <img className="SM" src={SM} alt="SM" />
+                </div>
             </article>
 
             <article className="ourChurch">
